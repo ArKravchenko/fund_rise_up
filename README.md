@@ -10,3 +10,6 @@
   <b>server is listening on http://localhost:3000 <br/>
   Mongo got connected </b>
 - Open browser at http://localhost:3000 <br/>
+
+<h3> Task description:</h3>
+<a>https://www.notion.so/Fullstack-test-b500e565cb89462b88003dd60927ab82</a>
