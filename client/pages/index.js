@@ -11,15 +11,15 @@ export default class Root extends Vue {
     suggestionUsd;
     suggestion;
     selectedCurrency;
-    toggle_exclusive;
+    toggleExclusive;
     dialog = false;
     dialogMessage = '';
 
     constructor() {
         super()
-        this.toggle_exclusive = 0;
+        this.toggleExclusive = 0;
         this.selectedCurrency = this.currencies[0];
-        this.suggestion = String(this.computedValues[this.toggle_exclusive]);
+        this.suggestion = String(this.computedValues[this.toggleExclusive]);
         this.suggestionUsd = this.suggestion;
     }
 
@@ -52,8 +52,8 @@ export default class Root extends Vue {
     @Watch('selectedCurrency')
     setSuggestion() {
 
-        if (!!this.toggle_exclusive || this.toggle_exclusive === 0) {
-            this.suggestion = String(this.computedValues[this.toggle_exclusive])
+        if (!!this.toggleExclusive || this.toggleExclusive === 0) {
+            this.suggestion = String(this.computedValues[this.toggleExclusive])
         }
 
         const foundIndex = this.computedValues.findIndex(el => el === Number(this.suggestion));
@@ -61,9 +61,9 @@ export default class Root extends Vue {
         if (foundIndex === -1) {
             this.suggestion = String(Math.round(this.suggestionUsd * this.selectedCurrency.rate))
             const foundIndexNewCurrency = this.computedValues.findIndex(el => el === Number(this.suggestion));
-            this.toggle_exclusive = foundIndexNewCurrency === -1 ? null : foundIndexNewCurrency;
+            this.toggleExclusive = foundIndexNewCurrency === -1 ? null : foundIndexNewCurrency;
         } else {
-            this.toggle_exclusive = foundIndex
+            this.toggleExclusive = foundIndex
         }
         this.suggestionUsd = Number(this.suggestion) / this.selectedCurrency.rate
     }
@@ -73,7 +73,7 @@ export default class Root extends Vue {
         this.suggestion = this.suggestion.replace(/\D/g, '')
         this.suggestionUsd = Number(this.suggestion) / this.selectedCurrency.rate
         const foundIndex = this.computedValues.findIndex(el => el === Number(this.suggestion));
-        this.toggle_exclusive = foundIndex === -1 ? null : foundIndex;
+        this.toggleExclusive = foundIndex === -1 ? null : foundIndex;
     }
 
     get computedValues() {

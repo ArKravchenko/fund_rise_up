@@ -4,8 +4,10 @@ const Router = require('koa-router');
 import {DonationService} from './services/donation.service'
 import {DonationDto} from "@server/dto/donation.dto";
 import {ValidationError} from "class-validator/types/validation/ValidationError";
+import {donationModel} from "@server/models/donation.model";
 
-const donationSevice = new DonationService();
+
+const donationSevice = new DonationService(donationModel);
 
 const router = Router({
     prefix: '/api'

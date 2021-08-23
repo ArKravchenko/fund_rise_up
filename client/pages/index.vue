@@ -33,7 +33,7 @@
           <v-col cols="11" xs="11" sm="6" md="5" lg="4">
             <v-card rounded="lg" class="grey lighten-5 elevate">
               <v-form class="d-flex flex-column flex-grow-1 align-self-stretch pa-5">
-                <v-btn-toggle v-model="toggle_exclusive" @change="setSuggestion">
+                <v-btn-toggle v-model="toggleExclusive" @change="setSuggestion">
                   <v-row>
                     <v-col
                         v-for="(value,index) in computedValues"
@@ -44,7 +44,7 @@
                         class="pa-1"
                     >
                       <v-btn
-                          :color="index === toggle_exclusive ? 'primary' : 'normal'"
+                          :color="index === toggleExclusive ? 'primary' : 'normal'"
                           elevation="2"
                           block
                           x-large
