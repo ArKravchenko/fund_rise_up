@@ -14,6 +14,7 @@ export class Donation extends TimeStamps {
 
 export const donationModel = getModelForClass(Donation, {
     existingMongoose: MongooseConnection.getInstance().getMongoose(),
-    existingConnection: MongooseConnection.getInstance().getConnection()
+    existingConnection: MongooseConnection.getInstance().getConnection(),
+    schemaOptions: {collection: 'Donation'}
 })
 
